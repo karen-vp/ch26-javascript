@@ -86,4 +86,65 @@ console.log('Nombre completo: ', misDatos.nombreCompleto());
 console.log('Nombre completo: ', misDatosDeInstagram.nombreCompleto());
 
 
+// Array
+// Almacena diferentes valores
+
+const cancionesPesoPluma =  [
+    'Soy el Belicón',
+    'El azul',
+    'El Tsurito',
+    'AMG',
+    {
+        2020: 5,
+        2021: 30,
+        2022: 56,
+        total: 91
+    }
+];
+
+console.log(cancionesPesoPluma[4].total);
+console.log(cancionesPesoPluma[4]['total']);
+console.log(cancionesPesoPluma[4][2021]);
+console.log(cancionesPesoPluma[4]['2021']);
+console.log('Numero total de elementos: ', cancionesPesoPluma.length);
+console.log('Contiene la canción AMG: ', cancionesPesoPluma.indexOf('AMG'));
+console.log('Contiene la canción AMG: ', cancionesPesoPluma.indexOf('AMG')>-1);
+
+// ----------------------------------------
+// Conversión de datos
+
+// toString
+const myNumber = 420;
+// Convertimos myNumber a string concatenandolo a un string
+console.log('Numero de minutos en la sesión: ' + myNumber);
+// Aquí usamos la clase String para convertir myNumber a string
+const myNumberTxt = String(myNumber); //esta forma no es usual
+console.log('Numero de minutos en la sesión: ' + myNumberTxt);
+
+// toNumber
+const myString = '420'
+const sumatoria = 80 + myString;
+// convierte del tipo string al tipo number
+const sumatoria2 = 80 + Number(myString);
+console.log('Valor de sumatoria: ', sumatoria); //80420
+console.log('Valor de sumatoria: ', sumatoria2); //500
+
+//la diferencia entre parseInt y Number es que parseInt devuelve solo los numeros enteros y Number devuelve todo el numero completo con decimales.
+const myStringInt = '420.2020';
+const sumatoriaInt = 80 + parseInt(myStringInt);
+const sumatoriaConNumber = 80 + Number(myStringInt);
+console.log('Valor de sumatoria entera: ', sumatoriaInt); //500
+console.log('Valor de sumatoria entera: ', sumatoriaConNumber); //500.202
+
+// toBoolean
+const isBelicoso = 'true';
+if(isBelicoso == 'true')
+     console.log('Denle su Belikin porque es: ', isBelicoso)
+else 
+    console.log('Abra paso a la barredora');
+
+// Boolean
+// para que sea False, debe ser: "", 0, null, undefined
+// Number
+// 
 
