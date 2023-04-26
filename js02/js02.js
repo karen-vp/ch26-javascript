@@ -189,20 +189,20 @@ console.log(numbers.map(number => number * 2));
 
 
 /*
-  Ejercicio 4
-  Crear un programa que itere sobre dos arreglos;
-  si hay cursos en común, imprimirlos en la consola.
+  Ejercicio 4
+  Crear un programa que itere sobre dos arreglos;
+  si hay cursos en común, imprimirlos en la consola.
 */
 
 
 
 // Funcion declarada que nos devuelve unicamente los valores que coincidan en ambos arreglos.
-function commonCourses(arr1, arr2){
+function commonCourses(arr1, arr2) {
     const courses = [];
-    for(let i=0; i<arr1.length; i++){
-        for(let j=0; j<arr2.length; j++){
-            if(arr1[i]===arr2[j])
-                courses.push( arr2[j]);
+    for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr2.length; j++) {
+            if (arr1[i] === arr2[j])
+                courses.push(arr2[j]);
         }
     }
     return `Cursos en comun: ${courses}`
@@ -213,7 +213,7 @@ const student2Courses = ["Geography", "Spanish", "Programming", "Music"];
 const studen3courses = ['Music'];
 
 // Funcion declarada que nos devuelve unicamente los valores que coincidan en ambos arreglos usando métodos:  filter e includes
-function commonCoursesWithFilter(arr1, arr2){
+function commonCoursesWithFilter(arr1, arr2) {
     return arr1.filter(element => arr2.includes(element));
 }
 
@@ -223,7 +223,7 @@ console.log(`Cursos en comun ${commonCoursesWithFilter(student1Courses, student2
 
 // En este caso estamos comparando los dos arreglos anteriores (student1Courses, student2Courses) con un tercer arreglo de cursos (studen3courses)
 const commonCoursesWithStudent3 = commonCoursesWithFilter(commonCoursesWithFilter(student1Courses, student2Courses), studen3courses);
-console.log('Cursos en comun: '+ commonCoursesWithStudent3.join(', '));
+console.log('Cursos en comun: ' + commonCoursesWithStudent3.join(', '));
 
 // ---------- Contar la cantidad de caracteres de una frase ---------
 // pepe pecas pica papas con un pico y una pala
@@ -234,13 +234,13 @@ console.log('Cursos en comun: '+ commonCoursesWithStudent3.join(', '));
 const phrase = 'pepe pecas pica papas con un pico y una pala';
 
 // mi version de esta funcion
-const countLetter = (phrase)=>{
+const countLetter = (phrase) => {
     let count = 0;
     const letter = 'p';
-    for(i = 0; i < phrase.length; i++){
-        if(phrase[i] == letter ) count += 1;
-        }
-        return count;
+    for (i = 0; i < phrase.length; i++) {
+        if (phrase[i] == letter) count += 1;
+    }
+    return count;
 }
 console.log(`Hay: ${countLetter(phrase)} 'p' en la frase: ${phrase}`);
 
@@ -253,4 +253,77 @@ const countChar = (p, phrase) => phrase.toLowerCase().split("").filter(c => c ==
 console.log("Cantidad de letras 'p':", countChar('p', phrase))
 
 
+//----------------Funciones Recursivas---------------
+// Es una tecnica de programacion en donde la función se llama así misma
+// Se debe tener precaución de no entrar a un bucle infinito.
+
+/*
+    function funcionRecursiva( valor ){
+        if (condiciónDeParo){
+
+        }else{
+            llamada recursiva
+        }
+    }
+*/
+// Funcion para calcular el factorial de un numero
+const factorialConCicloFor = (numero) => {
+    let element = 1
+    for (let i = 1; i <= numero; i++) {
+        element *= i;
+
+    }
+    return element;
+}
+// Funcion recursiva para calcular el factorial de un numero
+//para calcular el factorial de un numero no necesitamos un else porque no tenemos mas lineas de codigo abajo del ultimo return
+function factorialRecursivo(numero) {
+    if (numero == 1)
+        return 1;
+    return numero * factorialRecursivo(numero - 1);
+
+}
+// Funcion para calcular el factorial de un numero, usando arrow function y operador ternario
+const factorial = number => (number === 2) ?
+                            number:
+                            number * factorial(number-1);
+
+
+console.log(`Factorial de 5: ` + factorialConCicloFor(5))
+console.log(`Factorial de 5: ` + factorialRecursivo(5))
+
+
+// ------------ Ejercicio ---------------------------------
+// Una función recursiva que muestre en consola
+/*
+Saludo 1
+Saludo 2
+Saludo 3
+ ...
+Saludo 10
+
+saludo(10);
+*/
+
+//Mi version
+const saludos = (cantidadDeSaludos) =>{
+    if(cantidadDeSaludos == 1) 
+        return 'Saludo ' + 1;
+    return (saludos(cantidadDeSaludos -1) + ' Saludo '  +  cantidadDeSaludos);
+
+}
+
+console.log(saludos(10));
+
+// Otra forma
+const saludar = ( numero ) => {
+    if( numero === 1){
+        console.log("Saludo " + numero);
+    }else{
+        saludar(numero - 1)
+        console.log("Saludo " + numero);
+    };
+};
+
+saludar(10);
 
