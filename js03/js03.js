@@ -185,6 +185,7 @@ const setVelocidadVentilador = (velocidad) => {
             message = 'Velocidad alta'
             break;
         case 4:
+        case 5:
             message = 'Velocidad super alta'
             break;
         default:
@@ -195,4 +196,63 @@ const setVelocidadVentilador = (velocidad) => {
     return message;
 }
 
-console.log(setVelocidadVentilador(1));
+console.log(setVelocidadVentilador('4'));
+
+
+// ----- Practica ------
+// Refactorizar el ejercicio anterior y usar un switch
+
+const getEstacionSwitch = () => {
+    const mesInput = Number(document.getElementById('mes').value);
+    const output = document.getElementById('estacion');
+
+    switch (mesInput) {
+        case 1: case 2: case 12:
+            output.innerText = 'Es invierno';
+            break;
+        case 3: case 4: case 5:
+            output.innerText = 'Es primavera';
+            break;
+        case 6: case 7: case 8:
+            output.innerText = 'Es verano';
+            break;
+        case 9: case 10: case 11:
+            output.innerText = 'Es otoño';
+            break;
+        default:
+            output.innerText = 'No es un mes valido';
+            break;
+    }
+}
+
+// ------------ Operador condicional ternario --------------
+/*
+    Es el unico operador de Javascript que tiene 3 operandos. 
+    Generalmente se usa como opción a la sentencia if-else
+
+    Sintaxis
+
+        condicion ? expresion verdadera : expresion falsa;
+
+*/
+
+const subtotal = 1_000 //el _ nos sirve para poder diferenciar los numeros con sus decenas, centenas, etc, (no afecta en nada, es solo para distinguir los numeros.)
+const pagoTarjetaCredito = true;
+
+console.log(`La cuenta es de ${pagoTarjetaCredito ? subtotal * 1.025 : subtotal * 1} pesos`);
+
+const edad = 17;
+// Se permite el acceso al establecimiento?
+console.log(`Acceso ${edad >= 18 ? 'Permitido' : 'Denegado'}`);
+// a los de 17 solo se le da acceso con permiso
+console.log(`Acceso ${edad >= 18 ? 'Permitido' : (edad === 17 ? 'Solo con permiso' : 'Denegado')}`);
+
+
+// ------- Practica: Refactorizar el ejercicio de saludo ---------
+
+const printGreetings = number => {
+    let result = (number > 1) ? printGreetings(number-1) : number;
+    console.log("Saludo", result);
+    return number+1;
+};
+printGreetings(10);
