@@ -65,9 +65,9 @@ console.log('Despues de consumir la promesa');
 const divisionConParametros = (a, b) => {
     const myPromise = new Promise((resolve, reject) => {
         if (b === 0)
-             reject('No se puede realizar una división porque el valor es 0');
-            // Esto es lo mismo que el reject de arriba pero lo unico que hacemos es retardar un poquito el mensaje de reject con el setTimeout.
-            // setTimeout(()=> reject('¡DIVISION POR CERO!'), 5000);
+            reject('No se puede realizar una división porque el valor es 0');
+        // Esto es lo mismo que el reject de arriba pero lo unico que hacemos es retardar un poquito el mensaje de reject con el setTimeout.
+        // setTimeout(()=> reject('¡DIVISION POR CERO!'), 5000);
         else
             resolve(a / b);
     })
@@ -114,7 +114,7 @@ const manejoDeExcepciones = async () => {
     console.log('---Resolviendo divisiones usando TRY y CATCH---');
 
     try {
-        const resultadoErroneo = await divisionConParametros(20, 0); 
+        const resultadoErroneo = await divisionConParametros(20, 0);
         console.log('ASYNC y AWAIT ' + resultadoErroneo);
     } catch (error) {
         console.error('ASYNC y AWAIT ' + error);
@@ -125,3 +125,25 @@ const manejoDeExcepciones = async () => {
 }
 
 manejoDeExcepciones();
+
+
+// -----------------OTRA MANERA DE HACER PROMESAS -----------------------------
+// Promise.resolve()
+// Esta promesa solo tiene resolve y no tiene reject
+const promesaRapida = Promise.resolve(123);
+
+// ---- Resuelver (consumir) con .then
+
+const consumirConThen = ()=>{
+    promesaRapida.then((res) => console.log('Resolver con .then:', res));
+    console.log(456);
+}
+
+// ---- Resolver con Async y Await
+
+const resolvePromise = async () => {
+        console.log('Consumir con Async - Await:', await promesaRapida);
+        console.log(789);
+}
+consumirConThen();
+resolvePromise()
