@@ -108,3 +108,11 @@ const ocultarBoton = ()=>{
     const buttonRef = document.getElementById('button-b');
     buttonRef.style.visibility = 'hidden';
 }
+
+// Reestablecer boton
+
+const resetBoton = ()=>{
+    const buttonRef = document.getElementById('button-b');
+    buttonRef.removeAttribute('style');
+   
+}
