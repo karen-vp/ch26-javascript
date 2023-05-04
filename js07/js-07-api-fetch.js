@@ -32,6 +32,7 @@ const getProducts = (httpUrl) => {
 // getProducts(url)
 
 // ----- CONSUMIR FETCH UTILIZANDO ASYNC Y AWAIT ------
+// Nota: se debe usar el Try y Catch cuando se usa Async y Await para manejar las excepciones de la peticion
 
 const getProductsAsyncAwait = async (httpUrl)=>{
 
